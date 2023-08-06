@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<img lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/dist/output.css" rel="stylesheet">
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
+<script>
+  function carousel() {
+    return {
+      items: 6, // Number of carousel items
+      isDragging: false,
+      startX: 0,
+      scrollLeft: 0,
+      itemWidth: 250, // Adjust this value to match the width of your carousel items
+
+      init() {
+        const carouselWrapper = this.$refs.carousel;
+        carouselWrapper.addEventListener("mousedown", (e) => this.startDrag(e));
+        carouselWrapper.addEventListener("mouseleave", () => this.endDrag());
+        carouselWrapper.addEventListener("mouseup", () => this.endDrag());
+        carouselWrapper.addEventListener("mousemove", (e) => this.drag(e));
+      },
+
+      startDrag(e) {
+        this.isDragging = true;
+        this.startX = e.pageX - this.$refs.carousel.offsetLeft;
+        this.scrollLeft = this.$refs.carousel.scrollLeft;
+      },
+
+      endDrag() {
+        this.isDragging = false;
+      },
+
+      drag(e) {
+        if (!this.isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - this.$refs.carousel.offsetLeft;
+        const walk = (x - this.startX) * 3;
+        this.$refs.carousel.scrollLeft = this.scrollLeft - walk;
+      },
+    };
+  }
+</script>
+
     <title>Document</title>
 </head>
-<body>
+<img>
     <nav class="absolute flex items-center w-full">
         <img src="/img/HIMTI.png" class= "p-4 h-20 w-20">
         <ul class= "p-4 flex-1 space-x-10 ml-auto mr-4 text-white font-style text-lg text-right w-full">
@@ -24,8 +63,21 @@
         Let's Get Started !
     </div>
     <img src="/img/bg.jpg" class="bg-cover bg-center h-auto max-w-full z-0"></img>
-    <section class="absolute bg-gradient-to-b from-indigo-900 via-indigo-800 to-indigo-900 w-1443 h-3714">
-        <div class="absolute text-white text-7xl text-shadow-custom font-style2 underline mt-20">Event</div>
-    </section>
+    <!-- <section class="bg-gradient-to-b from-indigo-900 via-indigo-800 to-indigo-900 w-1443 h-3714"></section> -->
+    <img src="/img/blue.png" class="absolute bg-cover h-auto w-full z-0"></img>
+    <div class="relative text-white text-center text-7xl text-shadow-custom font-style2 underline mt-24">Event</div>
+    <div x-data="carousel()" x-init="init()" x-ref="carousel" class="absolute flex overflow-x-hidden mb-28">
+        <img src="/img/rectangle.png" class="mt-24 ml-16">
+            <img src="/img/image1.png" class="absolute py-6 px-5 transform translate-y-24 translate-x-20"></img>
+        </img>
+        <img src="/img/rectangle.png" class="mt-24 ml-7">
+            <img src="/img/image2.png" class="absolute py-6 px-5 transform translate-y-24 translate-x-full"></img>
+        </img>
+        <img src="/img/rectangle.png" class="mt-24 ml-7"></img>
+        <img src="/img/rectangle.png" class="mt-24 ml-7"></img>
+        <img src="/img/rectangle.png" class="mt-24 ml-7"></img>
+        <img src="/img/rectangle.png" class="mt-24 ml-7 mr-16"></img>
+    </div>
+    <div class="relative text-white text-center text-7xl text-shadow-custom font-style transform translate-y-80 mt-40">ONE FAMILY ONE GOAL</div>
 </body>
 </html>
