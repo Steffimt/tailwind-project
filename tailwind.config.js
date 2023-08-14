@@ -7,7 +7,8 @@ module.exports = {
     extend: {
       fontFamily: {
         style: ['Inter'],
-        style2: ['Work Sans']
+        style2: ['Work Sans'],
+        style3: ['Roboto Black']
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',
