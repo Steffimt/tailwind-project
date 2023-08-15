@@ -14,7 +14,11 @@ module.exports = {
         sm: '0 1px 2px var(--tw-shadow-color)',
         DEFAULT: '0 2px 4px var(--tw-shadow-color)',
         lg: '0 8px 16px var(--tw-shadow-color)',
-        custom: '8px 8px 15px rgba(0, 0, 0, 0.48)'
+        custom: '8px 8px 15px rgba(0, 0, 0, 0.48)',
+        custom2: '10px 10px 15px rgba(0, 0, 0, 0.46)'
+      },
+      backgroundColor: {
+        "7C00F9": '#7C00F9'
       },
     },
   },
